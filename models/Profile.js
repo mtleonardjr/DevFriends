@@ -5,10 +5,10 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  company: {
+  school: {
     type: String
   },
-  website: {
+  major: {
     type: String
   },
   location: {
@@ -18,23 +18,20 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  skills: {
+  interests: {
     type: [String],
     required: true
   },
   bio: {
     type: String
   },
-  githubusername: {
-    type: String
-  },
-  experience: [
+  class: [
     {
       title: {
         type: String,
         required: true
       },
-      company: {
+      instructor: {
         type: String,
         required: true
       },
@@ -68,7 +65,7 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      fieldofstudy: {
+      location: {
         type: String
       },
       from: {
@@ -79,9 +76,51 @@ const ProfileSchema = new mongoose.Schema({
         type: Date,
         required: true
       },
-      current: {
-        type: Boolean,
-        default: false
+      description: {
+        type: String
+      }
+    }
+  ],
+  club: [
+    {
+      name: {
+        type: String,
+        required: true
+      },
+      organization: {
+        type: String,
+        required: true
+      },
+      from: {
+        type: Date,
+        required: true
+      },
+      to: {
+        type: Date,
+        required: true
+      },
+      description: {
+        type: String
+      }
+    }
+  ],
+  charity: [
+    {
+      name: {
+        type: String,
+        required: true
+      },
+      organization: {
+        type: String,
+        required: true
+      },
+      from: {
+        type: Date,
+        required: true
+      },
+      to: {
+        type: Date,
+        required: true
       },
       description: {
         type: String
