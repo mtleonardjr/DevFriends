@@ -2,9 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
-import Experience from './Experience';
+import Class from './Class';
 import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 
@@ -27,7 +26,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
+          <Class class={profile.class} />
           <Education education={profile.education} />
 
           <div className="my-2">
@@ -37,13 +36,13 @@ const Dashboard = ({
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
+          <Fragment>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to="/create-profile" className="btn btn-primary my-1">
+              Create Profile
           </Link>
-        </Fragment>
-      )}
+          </Fragment>
+        )}
     </Fragment>
   );
 };

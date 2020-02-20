@@ -25,7 +25,7 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String
   },
-  class: [
+  class1: [
     {
       title: {
         type: String,

@@ -8,7 +8,6 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
-  GET_REPOS
 } from './types';
 
 // Get current users profile
@@ -21,10 +20,12 @@ export const getCurrentProfile = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+
   }
 };
 
@@ -103,8 +104,8 @@ export const createProfile = (
   }
 };
 
-// Add Experience
-export const addExperience = (formData, history) => async dispatch => {
+// Add Class
+export const addClass = (formData, history) => async dispatch => {
   try {
     const config = {
       headers: {
@@ -112,14 +113,14 @@ export const addExperience = (formData, history) => async dispatch => {
       }
     };
 
-    const res = await axios.put('/api/profile/experience', formData, config);
+    const res = await axios.put('/api/profile/class', formData, config);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
     });
 
-    dispatch(setAlert('Experience Added', 'success'));
+    dispatch(setAlert('Class Added', 'success'));
 
     history.push('/dashboard');
   } catch (err) {
@@ -169,17 +170,17 @@ export const addEducation = (formData, history) => async dispatch => {
   }
 };
 
-// Delete experience
-export const deleteExperience = id => async dispatch => {
+// Delete class
+export const deleteClass = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/profile/experience/${id}`);
+    const res = await axios.delete(`/api/profile/class/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
     });
 
-    dispatch(setAlert('Experience Removed', 'success'));
+    dispatch(setAlert('Class Removed', 'success'));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

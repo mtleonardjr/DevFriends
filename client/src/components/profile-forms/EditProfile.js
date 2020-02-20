@@ -5,12 +5,11 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const initialState = {
-  company: '',
-  website: '',
+  school: '',
+  major: '',
   location: '',
   status: '',
-  skills: '',
-  githubusername: '',
+  interests: '',
   bio: '',
   twitter: '',
   facebook: '',
@@ -44,12 +43,11 @@ const EditProfile = ({
   }, [loading, getCurrentProfile, profile]);
 
   const {
-    company,
-    website,
+    school,
+    major,
     location,
     status,
-    skills,
-    githubusername,
+    interests,
     bio,
     twitter,
     facebook,
@@ -93,9 +91,9 @@ const EditProfile = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
+            placeholder="School"
+            name="school"
+            value={school}
             onChange={onChange}
           />
           <small className="form-text">
@@ -105,9 +103,9 @@ const EditProfile = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="Website"
-            name="website"
-            value={website}
+            placeholder="Major"
+            name="major"
+            value={major}
             onChange={onChange}
           />
           <small className="form-text">
@@ -129,28 +127,16 @@ const EditProfile = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
+            placeholder="* Interests"
+            name="interests"
+            value={interests}
             onChange={onChange}
           />
           <small className="form-text">
             Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
           </small>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
-        </div>
+
         <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
