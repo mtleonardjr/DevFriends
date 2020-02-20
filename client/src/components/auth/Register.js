@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import styles from '../../../src/App.css';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -33,8 +34,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Sign Up</h1>
-      <p className="lead">
+      <h1 className="text-primary large">Sign Up</h1>
+      <p className='lead'>
         <i className="fas fa-user" /> Create Your Account
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
