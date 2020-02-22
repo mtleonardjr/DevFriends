@@ -6,7 +6,7 @@ const ProfileTop = ({
     status,
     company,
     location,
-    website,
+    major,
     social,
     user: { name, avatar }
   }
@@ -16,15 +16,10 @@ const ProfileTop = ({
       <img className='round-img my-1' src={avatar} alt='' />
       <h1 className='large'>{name}</h1>
       <p className='lead'>
-        {status} {company && <span> at {company}</span>}
+        {status} {company && <span> at {company}</span>} studying {major}
       </p>
       <p>{location && <span>{location}</span>}</p>
       <div className='icons my-1'>
-        {website && (
-          <a href={website} target='_blank' rel='noopener noreferrer'>
-            <i className='fas fa-globe fa-2x' />
-          </a>
-        )}
         {social && social.twitter && (
           <a href={social.twitter} target='_blank' rel='noopener noreferrer'>
             <i className='fab fa-twitter fa-2x' />

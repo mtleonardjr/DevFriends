@@ -11,11 +11,11 @@ const CreateProfile = ({
 	history
 }) => {
 	const [formData, setFormData] = useState({
-		school: '',
+		company: '',
 		major: '',
 		location: '',
 		status: '',
-		interests: '',
+		skills: '',
 		bio: '',
 		twitter: '',
 		facebook: '',
@@ -25,11 +25,11 @@ const CreateProfile = ({
 	});
 	const [displaySocialInputs, toggleSocialInputs] = useState(false);
 	const {
-		school,
+		company,
 		major,
 		location,
 		status,
-		interests,
+		skills,
 		bio,
 		twitter,
 		facebook,
@@ -53,7 +53,8 @@ const CreateProfile = ({
 			<Fragment>
 				<h1 className='large text-primary'>Create Your Profile</h1>
 				<p className='lead'>
-					<i className='fas fa-user' /> Let's get to know you
+					<i className='fas fa-user' /> Let's get some information to make your
+					profile stand out
 			</p>
 				<small>* = required field</small>
 				<form className='form' onSubmit={e => onSubmit(e)}>
@@ -67,16 +68,17 @@ const CreateProfile = ({
 							<option value="Graduate">Student or Learning</option>
 							<option value="Other">Other</option>
 						</select>
-						<small className='form-text'>
-							Where are you in your education
-					</small>
+						<small class="form-text"
+						>Where are you in your education</small
+						>
+
 					</div>
 					<div className='form-group'>
 						<input
 							type='text'
 							placeholder='School'
-							name='school'
-							value={school}
+							name='company'
+							value={company}
 							onChange={e => onChange(e)}
 						/>
 						<small className='form-text'>
@@ -111,13 +113,12 @@ const CreateProfile = ({
 						<input
 							type='text'
 							placeholder='* Interests'
-							name='interests'
-							value={interests}
+							name='skills'
+							value={skills}
 							onChange={e => onChange(e)}
 						/>
 						<small className='form-text'>
-							>Please use comma separated values (eg.
-				Sports, Art, Mustic)
+							Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
 					</small>
 					</div>
 
@@ -205,7 +206,7 @@ const CreateProfile = ({
 						Go Back
 				</Link>
 				</form>
-			</Fragment>
+			</Fragment >
 		);
 };
 

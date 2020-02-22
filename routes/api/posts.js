@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
-const Post = require('../../models/Posts');
-const User = require('../../models/User');
+
+const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
+const User = require('../../models/User');
 
 // @route    POST api/posts
 // @desc     Create a post
@@ -52,7 +53,7 @@ router.get('/', auth, async (req, res) => {
   try {
     const posts = await Post.find().sort({ date: -1 });
     res.json(posts);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
@@ -131,7 +132,7 @@ router.put('/like/:id', auth, async (req, res) => {
 });
 
 // @route    PUT api/posts/unlike/:id
-// @desc     Like a post
+// @desc     Unlike a post
 // @access   Private
 router.put('/unlike/:id', auth, async (req, res) => {
   try {

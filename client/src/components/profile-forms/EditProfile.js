@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const initialState = {
-  school: '',
+  company: '',
   major: '',
-  location: '',
   status: '',
-  interests: '',
+  location: '',
+  skills: '',
   bio: '',
   twitter: '',
   facebook: '',
@@ -43,11 +43,11 @@ const EditProfile = ({
   }, [loading, getCurrentProfile, profile]);
 
   const {
-    school,
+    company,
+    status,
     major,
     location,
-    status,
-    interests,
+    skills,
     bio,
     twitter,
     facebook,
@@ -71,33 +71,32 @@ const EditProfile = ({
         <i className="fas fa-user" /> Add some changes to your profile
       </p>
       <small>* = required field</small>
+
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
+            <option value="0">* Select Year</option>
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="Graduate">Student or Learning</option>
             <option value="Other">Other</option>
           </select>
           <small className="form-text">
-            Give us an idea of where you are at in your career
+            Where are you in your education
           </small>
         </div>
         <div className="form-group">
           <input
             type="text"
             placeholder="School"
-            name="school"
-            value={school}
+            name="company"
+            value={company}
             onChange={onChange}
           />
           <small className="form-text">
-            Could be your own company or one you work for
+            What school do you attend or plan on attending?
           </small>
         </div>
         <div className="form-group">
@@ -109,7 +108,7 @@ const EditProfile = ({
             onChange={onChange}
           />
           <small className="form-text">
-            Could be your own or a company website
+            What is your area of study?
           </small>
         </div>
         <div className="form-group">
@@ -128,12 +127,13 @@ const EditProfile = ({
           <input
             type="text"
             placeholder="* Interests"
-            name="interests"
-            value={interests}
+            name="skills"
+            value={skills}
             onChange={onChange}
           />
           <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values (eg.
+              Sports, Art, Mustic)
           </small>
         </div>
 
@@ -222,7 +222,7 @@ const EditProfile = ({
           Go Back
         </Link>
       </form>
-    </Fragment>
+    </Fragment >
   );
 };
 

@@ -2,11 +2,11 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addClass } from '../../actions/profile';
+import { addExperience } from '../../actions/profile';
 
-const AddClass = ({ addClass, history }) => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
-    company: '',
+    instructor: '',
     title: '',
     location: '',
     from: '',
@@ -17,30 +17,29 @@ const AddClass = ({ addClass, history }) => {
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
-  const { company, title, location, from, to, current, description } = formData;
+  const { instructor, title, location, from, to, current, description } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add An Class</h1>
+      <h1 className='large text-primary'>Add a Current Class</h1>
       <p className='lead'>
-        <i className='fas fa-code-branch' /> Add any developer/programming positions
-        that you have had in the past
+        <i className='fas fa-pencil-alt' /> Add any current classes you are enrolled in
       </p>
       <small>* = required field</small>
       <form
         className='form'
         onSubmit={e => {
           e.preventDefault();
-          addClass(formData, history);
+          addExperience(formData, history);
         }}
       >
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Job Title'
+            placeholder='* Class Title'
             name='title'
             value={title}
             onChange={e => onChange(e)}
@@ -50,9 +49,9 @@ const AddClass = ({ addClass, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='* Company'
-            name='company'
-            value={company}
+            placeholder='* Instructor'
+            name='instructor'
+            value={instructor}
             onChange={e => onChange(e)}
             required
           />
@@ -87,7 +86,7 @@ const AddClass = ({ addClass, history }) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Job
+            Currently enrolled?
           </p>
         </div>
         <div className='form-group'>
@@ -105,7 +104,7 @@ const AddClass = ({ addClass, history }) => {
             name='description'
             cols='30'
             rows='5'
-            placeholder='Job Description'
+            placeholder='Class Notes'
             value={description}
             onChange={e => onChange(e)}
           />
@@ -119,11 +118,11 @@ const AddClass = ({ addClass, history }) => {
   );
 };
 
-AddClass.propTypes = {
-  addClass: PropTypes.func.isRequired
+AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { addClass }
-)(withRouter(AddClass));
+  { addExperience }
+)(withRouter(AddExperience));
